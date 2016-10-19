@@ -1,6 +1,6 @@
 #include "INI.hpp"
 
-#include <string>
+//#include <string>
 #include <fstream>
 #include <sstream>
 #include <unordered_map>
@@ -270,5 +270,5 @@ namespace remapper
 				*wasRead = true;
 			return (*itemIter).second.intV;
 		}
-	} // namespace io
-} // namespace handy
+	} // namespace wrapper
+} // namespace remapper
