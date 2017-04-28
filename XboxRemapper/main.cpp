@@ -10,6 +10,7 @@
 
 //#include <stdio.h>
 //#include <stdbool.h>
+#include <tchar.h>
 #include <windows.h>
 #include <Xinput.h>
 //#include <chrono>
@@ -20,7 +21,7 @@
 int main()
 {
 	// get the xinput dll, for older computers (such as windows 7), try xinput1_3.dll instead
-	HINSTANCE xinputDll = LoadLibrary("xinput1_4.dll");
+	HINSTANCE xinputDll = LoadLibrary(_T("xinput1_4.dll"));
 	remapper::wrapper::XInputGetStateEx XInputGetState = (remapper::wrapper::XInputGetStateEx)GetProcAddress(xinputDll, (LPCSTR)100);
 	remapper::wrapper::XInputPowerOffController_t realXInputPowerOffController = (remapper::wrapper::XInputPowerOffController_t)GetProcAddress(xinputDll, (LPCSTR)103);
 
@@ -57,7 +58,7 @@ int main()
 				////// Diagnose which button was pressed, and what its mapped too
 				if (state.Gamepad.wButtons != 0)
 				{
-					printf("Player %d pressed %d on the gamepad.\n", i + 1, state.Gamepad);
+					printf("Player %d pressed %d on the gamepad.\n", i + 1, state.Gamepad.wButtons);
 					printf("This is mapped to %d on the keyboard\n\n", whichKey[i]);
 				}
 
